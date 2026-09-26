@@ -1,0 +1,6 @@
+{
+  "name": "NEXUS AI",
+  "description": "NEXUS AI is a context-aware spatial intelligence workspace. Your PC shouldn't run AI. It should understand your context. Developed by Tarun CH.",
+  "requestFramePermissions": ["camera", "microphone", "display-capture"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

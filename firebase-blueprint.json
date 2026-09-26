@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User profile with display name, email and preferences",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "preferredProcessingMode": { "type": "string" }
+      },
+      "required": ["email", "createdAt"]
+    },
+    "UserTask": {
+      "title": "User Task",
+      "description": "Task synced to Firestore for the user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "priority": { "type": "string" },
+        "source": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "title", "status"]
+    },
+    "UserNote": {
+      "title": "User Note",
+      "description": "User notes and research summaries synced to Firestore",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "tags": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "title", "content"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document owned by userId"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "UserTask",
+      "description": "User private tasks"
+    },
+    "/users/{userId}/notes/{noteId}": {
+      "schema": "UserNote",
+      "description": "User private notes"
+    }
+  }
+}
