@@ -578,21 +578,13 @@ Unavailable metrics
 ```
 This is important for AI-PC development because software should not report NPU/GPU measurements that the host environment cannot actually provide.
 
-For benchmark methodology and runtime considerations:
 
-→ "Benchmark Methodology" (docs/BENCHMARK_METHODOLOGY.md)
+For performance-related information, NEXUS AI distinguishes between verified
+runtime capabilities, fallback environments, and unavailable metrics.
 
----
+No benchmark values are claimed unless they have been measured in the
+corresponding hardware and software environment.
 
-📚 Documentation
-
-Document| Description
-```
-"Architecture" (docs/ARCHITECTURE.md)| System architecture and runtime detection
-"Snapdragon Optimization" (docs/SNAPDRAGON_OPTIMIZATION.md)| Qualcomm/Snapdragon optimization concepts
-"Benchmark Methodology" (docs/BENCHMARK_METHODOLOGY.md)| Performance measurement methodology
-"Deployment Guide" (docs/DEPLOYMENT_GUIDE.md)| Snapdragon/Windows deployment guidance
-```
 ---
 
 🎯 Design Goals
