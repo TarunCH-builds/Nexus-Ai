@@ -28,498 +28,258 @@ semantic search, and AI assistance into a single privacy-focused workspace.
 
 ---
 
-## 🧠 What is NEXUS AI?
+NEXUS AI ⚡
 
-NEXUS AI is an experimental **multimodal AI workspace** built around one simple idea:
+Context-Aware Multimodal AI Workspace for Snapdragon-Powered PCs
 
-> **AI should understand the context of your work, not just the prompt you type.**
+«Your PC shouldn't just run AI. It should understand your context.»
 
-Instead of treating every interaction as an isolated conversation, NEXUS is designed to bring together information from the user's workspace — such as screen content, documents, application context, voice input, and local knowledge.
+NEXUS AI is a privacy-focused, context-aware multimodal AI workspace designed to bring intelligent assistance closer to the device.
 
-The project follows a **local-first approach**, with runtime detection and fallback behaviour for environments where specific AI hardware or runtimes are unavailable.
+It combines AI reasoning, document intelligence, local memory, screen understanding, meeting intelligence, semantic search, action extraction, privacy controls, and hardware-aware AI routing into a unified workspace.
+
+NEXUS is designed with Snapdragon-powered AI PCs and Qualcomm Hexagon NPU acceleration in mind, while maintaining a CPU-based fallback for development and unsupported environments.
 
 ---
 
-# ✨ The Idea
+✨ What is NEXUS AI?
 
-Traditional AI workflow:
+Most AI assistants operate primarily through isolated prompts.
 
-```text
-User
+NEXUS takes a different approach:
+
+                  ┌──────────────────────┐
+                  │       NEXUS AI       │
+                  │ Context-Aware Layer  │
+                  └──────────┬───────────┘
+                             │
+       ┌─────────────┬───────┼────────┬─────────────┐
+       ▼             ▼       ▼        ▼             ▼
+    Screen       Documents  Voice   Meetings      Memory
+       │             │       │        │             │
+       └─────────────┴───────┼────────┴─────────────┘
+                             ▼
+                    Context Fusion Engine
+                             │
+                             ▼
+                       AI Model Router
+                             │
+              ┌──────────────┴──────────────┐
+              ▼                             ▼
+       Local / Edge AI                Cloud AI
+       CPU / NPU / QNN                  Gemini
+              │                             │
+              └──────────────┬──────────────┘
+                             ▼
+                    Context-Aware Response
+
+The goal is to make AI context-aware, privacy-conscious, hardware-aware, and useful across an entire digital workspace.
+
+---
+
+🚀 Core Capabilities
+
+🖥️ Screen Understanding
+
+Capture and process contextual information from the user's active workspace.
+
+- Screen/context ingestion
+- Application and window metadata
+- Visual/textual context representation
+- Context-aware analysis
+- Privacy-aware processing modes
+
+---
+
+📄 Document Intelligence
+
+Turn documents into searchable, structured knowledge.
+
+- Document ingestion
+- Text chunking
+- Semantic embeddings
+- Similarity search
+- Document summaries
+- Extracted concepts
+- Source-aware context retrieval
+
+NEXUS maintains document chunks and embeddings inside its local SQLite data layer.
+
+---
+
+🧠 Local AI Memory
+
+NEXUS maintains a persistent workspace memory layer for information that can be reused across interactions.
+
+Memory can represent:
+
+- Projects
+- Notes
+- Documents
+- Meetings
+- Tasks
+- Code
+- Context
+
+This creates a foundation for long-term contextual assistance instead of isolated conversations.
+
+---
+
+🕸️ Knowledge Graph
+
+Connect information across the workspace.
+
+Project
+  │
+  ├── Document
+  │      └── Concept
+  │
+  ├── Meeting
+  │      └── Decision
+  │
+  └── Task
+         └── Action
+
+The knowledge layer allows related entities and concepts to be represented as connected nodes and edges.
+
+---
+
+🎙️ Meeting Intelligence
+
+Designed to transform meeting information into structured workspace knowledge.
+
+Supports data structures for:
+
+- Meeting sessions
+- Transcripts
+- Speakers
+- Key points
+- Decisions
+- Action items
+- Follow-up tasks
+
+---
+
+⚙️ Action Engine
+
+NEXUS can represent potential actions generated from:
+
+- Screen context
+- Documents
+- Meetings
+- Prompts
+- Manual input
+
+Actions include metadata such as:
+
+- Risk level
+- Source
+- Reason
+- Approval status
+- Execution status
+- Sandbox status
+
+This creates a foundation for human-approved AI actions rather than uncontrolled automation.
+
+---
+
+🔐 Privacy Center
+
+Privacy is treated as an architectural layer.
+
+NEXUS supports processing modes including:
+
+LOCAL
   ↓
-Write Prompt
+On-device processing
+
+HYBRID
   ↓
-AI
+Local-first + controlled cloud fallback
+
+CLOUD
   ↓
-Answer
+Cloud AI processing
 
-NEXUS explores a more contextual workflow:
-
-┌───────────────┐
-                    │    Screen     │
-                    └───────┬───────┘
-                            │
-                    ┌───────▼───────┐
-                    │   Documents   │
-                    └───────┬───────┘
-                            │
-                    ┌───────▼───────┐
-                    │     Voice     │
-                    └───────┬───────┘
-                            │
-                    ┌───────▼───────┐
-                    │ Local Memory  │
-                    └───────┬───────┘
-                            │
-                            ▼
-                 ┌────────────────────┐
-                 │   NEXUS Context    │
-                 │      Engine        │
-                 └─────────┬──────────┘
-                           │
-                           ▼
-                 ┌────────────────────┐
-                 │    AI Task Router  │
-                 └─────────┬──────────┘
-                           │
-                           ▼
-                 ┌────────────────────┐
-                 │ Context-Aware AI   │
-                 │      Response      │
-                 └────────────────────┘
-
+The system also maintains privacy audit records describing processing destinations and user approval state.
 
 ---
 
-📸 NEXUS AI — Interface
+🧩 Hardware-Aware AI Routing
 
-> Real application screenshots should be placed in docs/screenshots/.
+NEXUS detects the runtime environment and selects an appropriate execution tier.
 
+                    AI REQUEST
+                         │
+                         ▼
+                 Task Classification
+                         │
+                         ▼
+                  Model Router
+                         │
+             ┌───────────┼───────────┐
+             ▼           ▼           ▼
+          Qualcomm      CPU       Cloud
+             QNN       Engine     Gemini
+             │           │           │
+             └───────────┼───────────┘
+                         ▼
+                       RESULT
 
+The architecture is designed to prioritize Qualcomm hardware when the required runtime and hardware are available, while providing a local CPU fallback during development or unsupported environments.
 
-Main Workspace
-
-<p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="NEXUS AI Dashboard" width="92%">
-</p><p align="center">
-  <sub>NEXUS AI workspace and contextual assistant interface.</sub>
-</p>
 ---
 
-AI Workspace
+⚡ Snapdragon / Qualcomm Focus
 
-<p align="center">
-  <img src="docs/screenshots/workspace.png" alt="NEXUS AI Workspace" width="92%">
-</p><p align="center">
-  <sub>Context-aware workspace for interacting with AI features.</sub>
-</p>
----
+NEXUS is designed around the concept of AI-PC-native computing.
 
-Context & Intelligence
+The primary target architecture is:
 
-<p align="center">
-  <img src="docs/screenshots/context.png" alt="NEXUS AI Context Engine" width="92%">
-</p><p align="center">
-  <sub>Context, memory, retrieval and workspace intelligence.</sub>
-</p>
----
+Qualcomm Snapdragon X Series
 
-Privacy Center
+with consideration for:
 
-<p align="center">
-  <img src="docs/screenshots/privacy.png" alt="NEXUS AI Privacy Center" width="92%">
-</p><p align="center">
-  <sub>Local-first processing controls and privacy configuration.</sub>
-</p>
----
+- Qualcomm Oryon CPU
+- Hexagon NPU
+- Qualcomm AI Engine
+- QNN execution environments
+- ONNX Runtime QNN execution provider
+- Quantized AI workloads
 
-🚀 Core Features
+The project includes runtime detection and Qualcomm compatibility handling so the application can distinguish between supported hardware environments and fallback environments.
 
-<table>
-<tr>
-<td width="50%" valign="top">🧠 Context Fusion
+«Important: NPU acceleration should be considered active only when the required Qualcomm hardware, drivers, and runtime are actually available. Development environments can operate using the CPU fallback path.»
 
-NEXUS combines information from multiple parts of the workspace to build useful context.
-
-Context sources can include:
-
-Screen information
-
-Active application
-
-Documents
-
-Project information
-
-Voice input
-
-Clipboard context
-
-Local memory
-
-
-</td><td width="50%" valign="top">🖥️ Screen Understanding
-
-The screen can become part of the AI interaction.
-
-NEXUS is designed to work with:
-
-Captured screen content
-
-Visible text
-
-Error messages
-
-UI regions
-
-Application context
-
-Spatial information
-
-
-</td>
-</tr><tr>
-<td width="50%" valign="top">📚 Local Document Intelligence
-
-Work with local documents without manually pasting everything into a chat.
-
-Supported workflows include:
-
-Text processing
-
-Markdown
-
-Source code
-
-PDF content
-
-Local retrieval
-
-Semantic search
-
-
-</td><td width="50%" valign="top">🔎 Semantic Search
-
-NEXUS uses vector-based retrieval to find information that is related to a query or context.
-
-The retrieval layer is built around:
-
-Vector representations
-
-Local indexing
-
-Cosine similarity
-
-Context retrieval
-
-
-</td>
-</tr><tr>
-<td width="50%" valign="top">🧠 Local Memory
-
-A local knowledge layer can keep track of useful information across the workspace.
-
-Examples include:
-
-Projects
-
-Tasks
-
-Meeting notes
-
-Concepts
-
-Document relationships
-
-
-</td><td width="50%" valign="top">🎙️ Multimodal Interaction
-
-NEXUS is designed around multiple forms of input rather than text alone.
-
-The architecture supports workflows involving:
-
-Screen
-
-Documents
-
-Voice
-
-Text
-
-Local context
-
-
-</td>
-</tr><tr>
-<td width="50%" valign="top">⚙️ Hardware Awareness
-
-NEXUS checks the environment before using hardware-specific capabilities.
-
-Runtime information can include:
-
-CPU architecture
-
-Processor information
-
-OS
-
-Qualcomm/Snapdragon indicators
-
-QNN availability
-
-AI runtime availability
-
-
-</td><td width="50%" valign="top">🔐 Privacy Controls
-
-Processing behaviour can be configured around different privacy preferences.
-
-Available modes are designed around:
-
-Local Only
-
-Hybrid
-
-Cloud-enabled processing
-
-
-The goal is to make the processing path explicit.
-
-</td>
-</tr>
-</table>
 ---
 
 🏗️ Architecture
 
-┌──────────────────────────────────────────────────────┐
-│                    NEXUS AI                          │
-│                                                      │
-│   Screen    Documents    Voice    Apps    Memory     │
-└──────────────────────────┬───────────────────────────┘
-                           │
-                           ▼
-┌──────────────────────────────────────────────────────┐
-│                  CONTEXT ENGINE                      │
-│                                                      │
-│      Collection → Normalization → Context Fusion     │
-└──────────────────────────┬───────────────────────────┘
-                           │
-                           ▼
-┌──────────────────────────────────────────────────────┐
-│                   AI TASK ROUTER                     │
-│                                                      │
-│ Vision │ Reasoning │ Retrieval │ Embeddings │ Voice │
-└──────────────────────────┬───────────────────────────┘
-                           │
-                           ▼
-┌──────────────────────────────────────────────────────┐
-│                  PRIVACY POLICY                       │
-│                                                      │
-│        LOCAL ONLY  │  HYBRID  │  CLOUD              │
-└──────────────────────────┬───────────────────────────┘
-                           │
-                           ▼
-┌──────────────────────────────────────────────────────┐
-│             RUNTIME CAPABILITY DETECTION              │
-│                                                      │
-│   OS │ CPU │ Architecture │ Runtime │ QNN           │
-└──────────────────────────┬───────────────────────────┘
-                           │
-                  ┌────────┴────────┐
-                  │                 │
-                  ▼                 ▼
-        ┌─────────────────┐  ┌─────────────────┐
-        │ Snapdragon/QNN  │  │ CPU Fallback    │
-        │ Runtime         │  │ Processing      │
-        └────────┬────────┘  └────────┬────────┘
-                 │                    │
-                 └──────────┬─────────┘
-                            ▼
-                 ┌─────────────────────┐
-                 │ Context-Aware Result│
-                 └──────────┬──────────┘
-                            │
-                            ▼
-                 ┌─────────────────────┐
-                 │ Local Activity Log │
-                 └─────────────────────┘
-
-
----
-
-🔄 How NEXUS Processes a Task
-
-Input
-  │
-  ▼
-Context Collection
-  │
-  ▼
-Context Normalization
-  │
-  ▼
-Task Detection
-  │
-  ▼
-Privacy Policy Check
-  │
-  ▼
-Runtime Capability Check
-  │
-  ▼
-Processing Path Selection
-  │
-  ├───────────────┐
-  ▼               ▼
-Local / QNN     CPU Fallback
-  │               │
-  └───────┬───────┘
-          ▼
-    AI / Retrieval
-          │
-          ▼
- Context-Aware Result
-          │
-          ▼
-   Local Audit Record
-
-
----
-
-⚡ Snapdragon & Edge AI
-
-NEXUS is being developed with Snapdragon-powered Windows AI PCs as an important target environment.
-
-The project explores the use of hardware-aware runtime detection and Qualcomm's AI software ecosystem.
-
-Areas being explored
-
-Snapdragon X Series PCs
-
-Qualcomm AI Engine ecosystem
-
-Qualcomm QNN
-
-ONNX Runtime
-
-Windows on ARM
-
-AI execution providers
-
-Hardware-aware model execution
-
-
-The application does not assume that an NPU or GPU is available simply because the target platform supports one.
-
-When the required runtime or driver is unavailable, NEXUS can use an available fallback path instead.
-
-This keeps hardware reporting tied to the actual execution environment.
-
-
----
-
-🔐 Privacy by Design
-
-Privacy is a core part of the architecture.
-
-NEXUS is designed around three processing modes:
-
-🟢 Local Only
-
-User Context
-     ↓
-NEXUS
-     ↓
-Local Processing
-     ↓
-Result
-
-Designed for workflows where information should remain on the device.
-
-
----
-
-🟡 Hybrid
-
-User Context
-     ↓
-NEXUS
-     ↓
-Local Processing
-     │
-     └── Explicitly permitted → Cloud
-
-Local processing is preferred, with external services available when enabled.
-
-
----
-
-🔵 Cloud Enabled
-
-Cloud services can be used for workflows that require them when the user has enabled the relevant integration.
-
-
----
-
-Privacy Principle
-
-Collect only what is needed.
-Process locally when practical.
-Make external processing explicit.
-Never fake hardware capabilities.
-
-
----
-
-🧩 AI Task Router
-
-Different AI tasks require different processing paths.
-
-NEXUS separates tasks conceptually into categories such as:
-
-Task	Example
-
-👁️ Vision	Screen/image understanding
-🔎 Retrieval	Searching local documents
-🧮 Embeddings	Creating vector representations
-🧠 Reasoning	Working with retrieved context
-📝 Summarization	Documents and notes
-🎙️ Speech	Voice transcription
-
-
-The router can consider both the task and the available runtime before selecting a processing path.
-
-
----
-
-📊 Performance & Diagnostics
-
-NEXUS includes a development-oriented performance layer for observing application behaviour.
-
-Depending on the environment, the project can work with measurements such as:
-
-CPU usage
-
-Process memory
-
-Heap usage
-
-Operation latency
-
-Processing time
-
-Runtime availability
-
-
-Hardware-specific metrics should only be reported when the relevant hardware and driver information is actually available.
-
-If a metric cannot be measured reliably, it should be reported as:
-
-Unavailable
-
-rather than presenting a simulated value as a real hardware measurement.
-
+┌─────────────────────────────────────────────────────────────┐
+│                         NEXUS AI                            │
+├─────────────────────────────────────────────────────────────┤
+│                    React + TypeScript UI                    │
+│                                                             │
+│  Home │ Screen │ Documents │ Memory │ Meetings │ Actions   │
+│        Knowledge Graph │ Privacy │ Performance Lab          │
+├─────────────────────────────────────────────────────────────┤
+│                  Context Fusion Layer                       │
+├─────────────────────────────────────────────────────────────┤
+│                     AI Model Router                         │
+├─────────────────────────────────────────────────────────────┤
+│              Runtime / Hardware Detection                   │
+├──────────────────────────┬──────────────────────────────────┤
+│                          │                                  │
+│ Qualcomm / QNN           │ Local CPU Engine                 │
+│ Snapdragon NPU           │ SIMD / Float32 processing       │
+│                          │                                  │
+├──────────────────────────┴──────────────────────────────────┤
+│                  Persistence / Data Layer                    │
+│                         SQLite                              │
+├─────────────────────────────────────────────────────────────┤
+│                 Optional Cloud AI Layer                     │
+│                       Gemini API                            │
+└─────────────────────────────────────────────────────────────┘
 
 ---
 
@@ -527,80 +287,210 @@ rather than presenting a simulated value as a real hardware measurement.
 
 Frontend
 
-   
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Motion
+- Lucide React
+- React Markdown
 
 Backend
 
-  
+- Node.js
+- Express
+- TypeScript
+- SQLite
+- Python FastAPI service
 
-Desktop
+AI
 
+- Google Gemini API
+- Local vector processing
+- Semantic embeddings
+- AI model routing
+- Context fusion
+- Hardware-aware execution
 
+Qualcomm / Edge
 
-AI / Edge
+- Snapdragon X Series target
+- Qualcomm Hexagon NPU
+- Qualcomm QNN
+- ONNX Runtime QNN execution provider
+- ARM64 runtime support
 
-  
+Data & Security
 
-Other
-
- 
-
+- SQLite
+- Local persistence
+- Scrypt password hashing
+- Cryptographically generated session tokens
+- Privacy audit logging
+- User-isolated workspace data
 
 ---
 
 📁 Project Structure
 
-Nexus-Ai/
+nexus-ai/
 │
-├── backend/              # Backend functionality
-├── data/                 # Local application data
-├── docs/                 # Documentation and screenshots
-├── scripts/              # Utility and development scripts
-├── server/               # Server-side components
-├── services/             # Application services
+├── src/
+│   ├── components/
+│   │   ├── command/
+│   │   ├── layout/
+│   │   └── views/
+│   │
+│   ├── services/
+│   ├── types/
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
 │
-├── src/                  # React frontend
-├── src-tauri/             # Tauri desktop layer
+├── server/
+│   ├── ai/
+│   │   ├── providers/
+│   │   ├── router.ts
+│   │   ├── localEngine.ts
+│   │   ├── environmentDetector.ts
+│   │   ├── contextEngine.ts
+│   │   └── modelCache.ts
+│   │
+│   ├── auth.ts
+│   ├── db.ts
+│   └── server.ts
 │
-├── .env.example           # Environment configuration template
-├── package.json           # Project configuration
-├── server.py              # Python service
-├── server.ts              # TypeScript server
-├── tsconfig.json
+├── backend/
+│   ├── services/
+│   ├── database.py
+│   ├── main.py
+│   └── models.py
+│
+├── data/
+│   └── nexus.sqlite
+│
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── SNAPDRAGON_OPTIMIZATION.md
+│   ├── BENCHMARK_METHODOLOGY.md
+│   └── DEPLOYMENT_GUIDE.md
+│
+├── .env.example
+├── package.json
 ├── vite.config.ts
 └── README.md
 
-> The structure may change as NEXUS continues to evolve.
+---
 
+🔄 AI Processing Flow
 
+A typical NEXUS request follows this conceptual pipeline:
 
+User Input
+    │
+    ▼
+Context Collection
+    │
+    ▼
+Context Fusion
+    │
+    ▼
+Task Classification
+    │
+    ▼
+AI Model Router
+    │
+    ├──── Qualcomm / QNN
+    │
+    ├──── Local CPU Engine
+    │
+    └──── Gemini Cloud
+    │
+    ▼
+Response Generation
+    │
+    ▼
+Workspace Memory / Audit
+
+The routing layer allows the system to select a provider based on the task, environment, available runtime, and configured processing mode.
+
+---
+
+🔐 Security & Privacy Architecture
+
+NEXUS includes several security-oriented components.
+
+Authentication
+
+Passwords are processed using:
+
+Password
+   ↓
+Random Salt
+   ↓
+scrypt
+   ↓
+Derived Key
+   ↓
+Stored Hash
+
+Plaintext passwords are not stored.
+
+Sessions
+
+Authenticated sessions use cryptographically generated tokens.
+
+User Isolation
+
+Workspace entities include user associations for:
+
+- Documents
+- Memory
+- Tasks
+- Meetings
+- Conversations
+- Preferences
+- Privacy records
+
+Privacy Auditing
+
+Processing events can record:
+
+- Processing destination
+- Data summary
+- User approval
+- Data egress state
+- Timestamp
 
 ---
 
 💻 Getting Started
 
-Requirements
+Prerequisites
 
-Before running NEXUS locally, install:
+Recommended:
 
-Node.js
+- Node.js 20+
+- npm
+- Git
 
-npm
+For the Python backend:
 
-Git
+- Python 3.10+
+- pip
 
+For Snapdragon hardware experimentation:
 
-For Snapdragon-specific functionality, the target machine also needs the relevant Qualcomm/QNN runtime and drivers.
-
+- Windows 11 ARM64
+- Snapdragon X Series device
+- Appropriate Qualcomm/QNN runtime and drivers
 
 ---
 
-1. Clone
+1. Clone the Repository
 
-git clone https://github.com/TarunCH-builds/Nexus-Ai.git
-
-cd Nexus-Ai
-
+git clone https://github.com/YOUR_USERNAME/nexus-ai.git
+cd nexus-ai
 
 ---
 
@@ -608,25 +498,22 @@ cd Nexus-Ai
 
 npm install
 
-
 ---
 
-3. Environment Configuration
+3. Configure Environment
 
-Create a local .env file when required.
+Create your environment file:
 
-Use:
+cp .env.example .env
 
-.env.example
-
-as the configuration reference.
+Configure the required AI provider credentials according to your environment.
 
 Example:
 
-GEMINI_API_KEY=
+GEMINI_API_KEY=your_api_key_here
+AI_PROVIDER=gemini
 
-Never commit real API keys or private credentials.
-
+Never commit real API keys to GitHub.
 
 ---
 
@@ -634,295 +521,177 @@ Never commit real API keys or private credentials.
 
 npm run dev
 
+The application will start using the configured development server.
 
 ---
 
-5. Build
+5. Build for Production
 
 npm run build
 
-
----
-
-6. Production
+Then:
 
 npm start
 
+---
+
+🐍 Optional FastAPI Backend
+
+The repository also contains a Python FastAPI service.
+
+Install dependencies:
+
+pip install -r backend/requirements.txt
+
+Run:
+
+uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+
+API documentation:
+
+http://localhost:8000/docs
 
 ---
 
-🔒 Security
+📊 Performance & Runtime
 
-Before pushing changes to GitHub, make sure sensitive files are excluded.
+NEXUS includes a dedicated Performance Lab for runtime and system-level information.
 
-Do not commit:
+The project is designed to distinguish between:
 
-.env
-API keys
-Private keys
-Passwords
-Service account credentials
-Authentication secrets
+Verified hardware/runtime
+          vs.
+Fallback environment
+          vs.
+Unavailable metrics
 
-The project should use .env.example for sharing configuration structure without exposing credentials.
+This is important for AI-PC development because software should not report NPU/GPU measurements that the host environment cannot actually provide.
 
+For benchmark methodology and runtime considerations:
 
----
-
-📸 Recommended Screenshot Layout
-
-Store your actual screenshots here:
-
-docs/
-└── screenshots/
-    ├── dashboard.png
-    ├── workspace.png
-    ├── context.png
-    ├── privacy.png
-    └── performance.png
-
-Then the README will display them automatically.
-
-Use actual screenshots from your current NEXUS application.
-
-Do not use stock AI images or generated UI mockups as if they were screenshots of the working project.
-
-
----
-
-🎥 Demo
-
-A short product demonstration can be added here once available.
-
-Example:
-
-[▶ Watch NEXUS AI Demo](YOUR_REAL_DEMO_LINK)
-
-A screen recording showing the real application is preferred over a promotional animation.
-
-
----
-
-🧪 Current Development Status
-
-NEXUS AI is an active development project.
-
-Current focus
-
-Context-aware workspace
-
-Local document processing
-
-Semantic retrieval
-
-Screen understanding
-
-Local memory
-
-Privacy controls
-
-Runtime capability detection
-
-Snapdragon/QNN exploration
-
-Desktop integration
-
-Performance diagnostics
-
-
-Some capabilities depend on the available hardware, drivers, models, and runtime environment.
-
-
----
-
-🗺️ Roadmap
-
-Context
-
-[x] Context-aware workspace foundation
-
-[x] Local context processing
-
-[ ] Expanded application context
-
-[ ] Improved cross-application context
-
-
-Documents & Retrieval
-
-[x] Document processing foundation
-
-[x] Local semantic search
-
-[x] Vector similarity retrieval
-
-[ ] Improved retrieval ranking
-
-[ ] Expanded document support
-
-
-Multimodal AI
-
-[x] AI task routing architecture
-
-[ ] Expanded vision capabilities
-
-[ ] Improved reasoning pipeline
-
-[ ] More local model support
-
-[ ] Better multimodal orchestration
-
-
-Voice
-
-[ ] Improved speech recognition
-
-[ ] Voice commands
-
-[ ] Meeting intelligence
-
-[ ] Voice-controlled workspace actions
-
-
-Snapdragon
-
-[x] Runtime detection foundation
-
-[x] Qualcomm/QNN integration direction
-
-[ ] Expanded QNN execution
-
-[ ] Snapdragon hardware testing
-
-[ ] Hardware-specific benchmarks
-
-
-Desktop
-
-[x] Tauri integration
-
-[ ] Deeper OS integration
-
-[ ] Background services
-
-[ ] Expanded system context
-
-
-
----
-
-💡 Why I Built NEXUS
-
-I wanted to explore a simple question:
-
-> What would an AI workspace look like if it understood what you were already working on?
-
-
-
-When developing software, studying, researching, or working with multiple documents, a lot of time is spent repeatedly providing context to AI tools.
-
-NEXUS is my attempt to explore a different workflow.
-
-Instead of starting with:
-
-"What should I tell the AI?"
-
-the idea is to move toward:
-
-"What does the AI already understand about my workspace?"
-
-That means bringing together context, retrieval, multimodal input, local processing, and hardware awareness in one place.
-
-
----
-
-🔭 Future Direction
-
-The longer-term goal is to explore an AI workspace that can understand:
-
-What you're seeing
-        +
-What you're working on
-        +
-What you've worked on before
-        +
-What you're saying
-        +
-What your device can process
-        ↓
-A more contextual AI experience
-
-NEXUS is still evolving, and the architecture will continue to change as different models, runtimes, and hardware environments are tested.
-
+→ "Benchmark Methodology" (docs/BENCHMARK_METHODOLOGY.md)
 
 ---
 
 📚 Documentation
 
-Project documentation can be found in:
+Document| Description
+"Architecture" (docs/ARCHITECTURE.md)| System architecture and runtime detection
+"Snapdragon Optimization" (docs/SNAPDRAGON_OPTIMIZATION.md)| Qualcomm/Snapdragon optimization concepts
+"Benchmark Methodology" (docs/BENCHMARK_METHODOLOGY.md)| Performance measurement methodology
+"Deployment Guide" (docs/DEPLOYMENT_GUIDE.md)| Snapdragon/Windows deployment guidance
 
-docs/
+---
 
-Planned documentation includes:
+🎯 Design Goals
 
-System Architecture
+NEXUS AI is built around five core principles:
 
-Runtime Detection
+01 — Context First
 
-Snapdragon Deployment
+AI should understand the user's workspace, not just an isolated prompt.
 
-QNN Integration
+02 — Privacy by Architecture
 
-Local Retrieval
+Sensitive processing should remain local whenever the configured runtime supports it.
 
-Privacy Model
+03 — Hardware Awareness
 
-Benchmark Methodology
+AI workloads should be able to take advantage of available edge hardware.
 
-Development Guide
+04 — Transparent Runtime Behavior
 
+Unavailable hardware capabilities should be reported instead of fabricated.
 
+05 — Human Control
+
+AI-generated actions should remain visible and controllable by the user.
+
+---
+
+🧪 Current Project Scope
+
+NEXUS currently brings together:
+
+- Multimodal workspace architecture
+- Context fusion
+- AI model routing
+- Local semantic processing
+- Document intelligence
+- Persistent AI memory
+- Knowledge graph structures
+- Meeting intelligence structures
+- Action engine
+- Privacy controls
+- Runtime/hardware detection
+- Qualcomm-oriented execution architecture
+- Gemini integration
+- SQLite persistence
+- FastAPI backend
+- Authentication and session management
+
+The architecture is designed to evolve toward deeper native AI-PC integration as supported hardware runtimes become available.
+
+---
+
+🚧 Roadmap
+
+Near Term
+
+- [ ] Deeper native Qualcomm QNN execution
+- [ ] Expanded multimodal local inference
+- [ ] Improved screen understanding pipeline
+- [ ] More document formats
+- [ ] Advanced semantic retrieval
+- [ ] Richer knowledge graph visualization
+- [ ] Improved meeting transcription pipeline
+- [ ] More granular privacy controls
+
+Future
+
+- [ ] Native desktop packaging
+- [ ] Expanded Snapdragon AI Hub model support
+- [ ] Advanced local multimodal models
+- [ ] Hardware-specific model optimization
+- [ ] More sophisticated agentic workflows
+- [ ] On-device personalization
 
 ---
 
 🤝 Contributing
 
-NEXUS AI is currently a personal development project.
+Contributions, ideas, and technical discussions are welcome.
 
-Issues and technical suggestions are welcome through GitHub.
+git checkout -b feature/your-feature
 
-If the project opens for external contributions later, contribution guidelines will be added here.
-
+Make your changes, test them locally, and open a pull request with a clear description of the improvement.
 
 ---
 
-👨‍💻 Built by Tarun C H
+⚠️ Disclaimer
 
-<div align="center">Tarun C H
+NEXUS AI is an experimental AI workspace project.
 
-Computer Science / AI-ML Student
-Developer • AI/ML Enthusiast • Builder
+Actual NPU acceleration and Qualcomm-specific capabilities depend on the device, operating system, installed drivers, Qualcomm runtime, supported models, and execution environment.
 
-I enjoy building practical software around AI, intelligent systems, multimodal interaction, and emerging computing platforms.
+Performance numbers should be interpreted according to the project's documented benchmark methodology and should not be assumed to apply to every device.
 
-<br/>
-
-
-
-</div>
 ---
 
-⭐ If You Find NEXUS Interesting
+👨‍💻 Author
 
-If you're interested in the project:
+Tarun C H
 
-⭐ Star the repository
+Information Science Engineering | AI/ML | Software Development
 
-👀 Explore the implementation
+Building at the intersection of:
 
-🐛 Report issues
+AI × Edge Computing × Software × Innovation
 
-💡 Share ideas
+---
 
-🔧 Experiment with the code
+⭐ If you find NEXUS AI interesting
+
+Consider giving the repository a ⭐ and exploring the architecture.
+
+NEXUS AI — bringing context-aware intelligence closer to the device.
