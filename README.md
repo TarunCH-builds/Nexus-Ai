@@ -39,7 +39,19 @@ NEXUS AI is a privacy-focused, context-aware multimodal AI workspace designed to
 It combines AI reasoning, document intelligence, local memory, screen understanding, meeting intelligence, semantic search, action extraction, privacy controls, and hardware-aware AI routing into a unified workspace.
 
 NEXUS is designed with Snapdragon-powered AI PCs and Qualcomm Hexagon NPU acceleration in mind, while maintaining a CPU-based fallback for development and unsupported environments.
+## 📸 Screenshots
 
+### 🖥️ NEXUS AI Dashboard
+
+<p align="center">
+  <img src="./docs/screenshots/nexus-dashboard.png" alt="NEXUS AI Dashboard" width="100%">
+</p>
+
+### ⚡ NEXUS AI Features
+
+<p align="center">
+  <img src="./docs/screenshots/nexus-features.png" alt="NEXUS AI Features" width="100%">
+</p>
 ---
 
 ✨ What is NEXUS AI?
@@ -128,7 +140,7 @@ This creates a foundation for long-term contextual assistance instead of isolate
 🕸️ Knowledge Graph
 
 Connect information across the workspace.
-
+```
 Project
   │
   ├── Document
@@ -139,7 +151,7 @@ Project
   │
   └── Task
          └── Action
-
+```
 The knowledge layer allows related entities and concepts to be represented as connected nodes and edges.
 
 ---
@@ -188,7 +200,7 @@ This creates a foundation for human-approved AI actions rather than uncontrolled
 Privacy is treated as an architectural layer.
 
 NEXUS supports processing modes including:
-
+```
 LOCAL
   ↓
 On-device processing
@@ -200,7 +212,7 @@ Local-first + controlled cloud fallback
 CLOUD
   ↓
 Cloud AI processing
-
+```
 The system also maintains privacy audit records describing processing destinations and user approval state.
 
 ---
@@ -253,8 +265,8 @@ The project includes runtime detection and Qualcomm compatibility handling so th
 
 ---
 
-🏗️ Architecture
-
+🏗️ Architecture :
+```
 ┌─────────────────────────────────────────────────────────────┐
 │                         NEXUS AI                            │
 ├─────────────────────────────────────────────────────────────┤
@@ -280,7 +292,7 @@ The project includes runtime detection and Qualcomm compatibility handling so th
 │                 Optional Cloud AI Layer                     │
 │                       Gemini API                            │
 └─────────────────────────────────────────────────────────────┘
-
+```
 ---
 
 🛠️ Technology Stack
@@ -332,7 +344,7 @@ Data & Security
 ---
 
 📁 Project Structure
-
+```
 nexus-ai/
 │
 ├── src/
@@ -379,13 +391,13 @@ nexus-ai/
 ├── package.json
 ├── vite.config.ts
 └── README.md
-
+```
 ---
 
 🔄 AI Processing Flow
 
 A typical NEXUS request follows this conceptual pipeline:
-
+```
 User Input
     │
     ▼
@@ -411,7 +423,7 @@ Response Generation
     │
     ▼
 Workspace Memory / Audit
-
+```
 The routing layer allows the system to select a provider based on the task, environment, available runtime, and configured processing mode.
 
 ---
@@ -423,7 +435,7 @@ NEXUS includes several security-oriented components.
 Authentication
 
 Passwords are processed using:
-
+```
 Password
    ↓
 Random Salt
@@ -433,7 +445,7 @@ scrypt
 Derived Key
    ↓
 Stored Hash
-
+```
 Plaintext passwords are not stored.
 
 Sessions
@@ -489,8 +501,7 @@ For Snapdragon hardware experimentation:
 
 1. Clone the Repository
 
-git clone https://github.com/YOUR_USERNAME/nexus-ai.git
-cd nexus-ai
+git clone https://github.com/TarunCH-builds/Nexus-Ai
 
 ---
 
@@ -558,13 +569,13 @@ http://localhost:8000/docs
 NEXUS includes a dedicated Performance Lab for runtime and system-level information.
 
 The project is designed to distinguish between:
-
+```
 Verified hardware/runtime
           vs.
 Fallback environment
           vs.
 Unavailable metrics
-
+```
 This is important for AI-PC development because software should not report NPU/GPU measurements that the host environment cannot actually provide.
 
 For benchmark methodology and runtime considerations:
@@ -576,11 +587,12 @@ For benchmark methodology and runtime considerations:
 📚 Documentation
 
 Document| Description
+```
 "Architecture" (docs/ARCHITECTURE.md)| System architecture and runtime detection
 "Snapdragon Optimization" (docs/SNAPDRAGON_OPTIMIZATION.md)| Qualcomm/Snapdragon optimization concepts
 "Benchmark Methodology" (docs/BENCHMARK_METHODOLOGY.md)| Performance measurement methodology
 "Deployment Guide" (docs/DEPLOYMENT_GUIDE.md)| Snapdragon/Windows deployment guidance
-
+```
 ---
 
 🎯 Design Goals
